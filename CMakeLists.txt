@@ -1,9 +1,19 @@
+# set(CMAKE_TRY_COMPILE_TARGET_TYPE "STATIC_LIBRARY")
+# SET (CMAKE_C_COMPILER_WORKS 1)
+# SET (CMAKE_CXX_COMPILER_WORKS 1)
+
 cmake_minimum_required(VERSION 2.8.12)
 project(libmysofa C CXX)
 
 include(CheckCCompilerFlag)
 include(GenerateExportHeader)
 include(GNUInstallDirs)
+
+# set(CMAKE_EXECUTABLE_SUFFIX ".wasm")
+set(ZLIB_LIBRARY "/Users/arcop/Downloads/zlib-1.2.13/build")
+set(ZLIB_LIBRARIES "/Users/arcop/Downloads/zlib-1.2.13")
+set(ZLIB_INCLUDE_DIRS "/Users/arcop/Downloads/zlib-1.2.13;/Users/arcop/Downloads/zlib-1.2.13/build")
+set(MATH "/Users/arcop/code/git/emsdk/upstream/include/c++/v1")
 
 option(BUILD_TESTS "Build test programs" ON)
 option(BUILD_SHARED_LIBS "Build shared library" ON)

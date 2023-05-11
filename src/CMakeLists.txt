@@ -12,6 +12,9 @@ use_c99()
 
 configure_file(config.h.in config.h)
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
+# include_directories(${ZLIB_INCLUDE_DIRS})
+include_directories(${ZLIB_LIBRARIES})
+include_directories(${ZLIB_LIBRARY})
 
 if(NOT MSVC)
   if(NOT WIN32)
@@ -36,8 +39,9 @@ if(NOT MSVC)
   else()
     set(MATH "")
   endif()
-  include(FindZLIB)
-  include_directories(${ZLIB_INCLUDE_DIRS})
+  # include(FindZLIB)
+  include_directories(${ZLIB_LIBRARY})
+  include_directories(${ZLIB_LIBRARIES})
   set(PKG_CONFIG_PRIVATELIBS "-lm ${PKG_CONFIG_PRIVATELIBS}")
   set(PKG_CONFIG_PRIVATELIBS "-lz ${PKG_CONFIG_PRIVATELIBS}")
 else()
@@ -54,6 +58,9 @@ else()
   include_directories(
     ${PROJECT_SOURCE_DIR}/windows/third-party/zlib-1.2.11/include/)
 endif()
+
+# include_directories("/Users/arcop/Downloads/zlib-1.2.13")
+# include_directories("/Users/arcop/Downloads/zlib-1.2.13/build")
 
 set(libsrc
     hrtf/reader.c
@@ -78,10 +85,10 @@ set(libsrc
     resampler/speex_resampler.c)
 if(BUILD_STATIC_LIBS)
 add_library(mysofa-static STATIC ${libsrc})
-target_link_libraries(mysofa-static LINK_PRIVATE ${MATH} ${ZLIB_LIBRARIES})
+target_link_libraries(mysofa-static LINK_PRIVATE ${MATH} ${ZLIB_LIBRARIES} ${ZLIB_LIBRARY} "/Users/arcop/Downloads/zlib-1.2.13/build/libz.a")
 set_target_properties(
   mysofa-static
-  PROPERTIES OUTPUT_NAME mysofa CLEAN_DIRECT_OUTPUT 1 POSITION_INDEPENDENT_CODE
+  PROPERTIES libmysofa mysofa CLEAN_DIRECT_OUTPUT 1 POSITION_INDEPENDENT_CODE
                                                       ${BUILD_SHARED_LIBS})
 install(TARGETS mysofa-static ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR})
 
@@ -100,7 +107,7 @@ endif()
 
 if(BUILD_SHARED_LIBS)
   add_library(mysofa-shared SHARED ${libsrc})
-  target_link_libraries(mysofa-shared PRIVATE ${MATH} ${ZLIB_LIBRARIES})
+  target_link_libraries(mysofa-shared PRIVATE ${MATH} ${ZLIB_LIBRARIES} ${ZLIB_LIBRARY} "/Users/arcop/Downloads/zlib-1.2.13/build/libz.a")
   set_target_properties(mysofa-shared
                         PROPERTIES OUTPUT_NAME mysofa CLEAN_DIRECT_OUTPUT 1)
   set_property(
@@ -164,8 +171,10 @@ if(BUILD_TESTS)
     tests/user_defined_variable.c)
   if(BUILD_STATIC_LIBS)
     target_link_libraries(external mysofa-static ${CUNIT_LIBRARIES})
+    message(${CUNIT_LIBRARIES})
   else()
     target_link_libraries(external mysofa-shared ${CUNIT_LIBRARIES} m)
+    message(${CUNIT_LIBRARIES})
   endif()
   add_test(
     NAME external
@@ -189,6 +198,8 @@ if(BUILD_TESTS)
     NAME multithread
     WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}
     COMMAND multithread)
+
+  message(${CUNIT_LIBRARIES})
 
   if(UNIX
      AND CODE_COVERAGE

@@ -6,6 +6,8 @@
 
 int main() {
 
+  puts("internal trying to run");
+
   int err;
 
   CU_pSuite pSuite = NULL;

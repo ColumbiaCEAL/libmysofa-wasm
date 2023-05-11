@@ -116,6 +116,9 @@ void *timer(void *arg) {
 #define THREADS (20)
 
 int main() {
+
+  puts("multithread trying to run");
+
   int t;
   int err = 0;
 

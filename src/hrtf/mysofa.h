@@ -29,6 +29,8 @@ extern "C" {
 #define mylog(...)
 #endif
 
+/** //   */
+
 /** attributes */
 struct MYSOFA_ATTRIBUTE {
   struct MYSOFA_ATTRIBUTE *next;

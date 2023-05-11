@@ -1,0 +1,125 @@
+
+---
+events:
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/opt/homebrew/Cellar/cmake/3.26.3/share/cmake/Modules/CMakeDetermineSystem.cmake:199 (message)"
+      - "CMakeLists.txt:6 (project)"
+    message: |
+      The target system is: Emscripten - 1 - x86
+      The host system is: Darwin - 22.3.0 - arm64
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/opt/homebrew/Cellar/cmake/3.26.3/share/cmake/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "/opt/homebrew/Cellar/cmake/3.26.3/share/cmake/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
+      - "/opt/homebrew/Cellar/cmake/3.26.3/share/cmake/Modules/CheckCCompilerFlag.cmake:40 (cmake_check_compiler_flag)"
+      - "CMakeLists.txt:41 (check_c_compiler_flag)"
+    checks:
+      - "Performing Test C_HAS_WALL"
+    directories:
+      source: "/Users/arcop/code/git/libmysofa-wasm/build-ninja/CMakeFiles/CMakeScratch/TryCompile-faoRwT"
+      binary: "/Users/arcop/code/git/libmysofa-wasm/build-ninja/CMakeFiles/CMakeScratch/TryCompile-faoRwT"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_MODULE_PATH: "/Users/arcop/code/git/emsdk/upstream/emscripten/cmake/Modules;/Users/arcop/code/git/emsdk/upstream/emscripten/cmake/Modules;/Users/arcop/code/git/emsdk/upstream/emscripten/cmake/Modules;/Users/arcop/code/git/emsdk/upstream/emscripten/cmake/Modules;/Users/arcop/code/git/emsdk/upstream/emscripten/cmake/Modules"
+    buildResult:
+      variable: "C_HAS_WALL"
+      cached: true
+      stdout: |
+        Change Dir: /Users/arcop/code/git/libmysofa-wasm/build-ninja/CMakeFiles/CMakeScratch/TryCompile-faoRwT
+        
+        Run Build Command(s):/opt/homebrew/bin/ninja -v cmTC_8589e && [1/2] /Users/arcop/code/git/emsdk/upstream/emscripten/emcc -DC_HAS_WALL  -Wall -MD -MT CMakeFiles/cmTC_8589e.dir/src.c.o -MF CMakeFiles/cmTC_8589e.dir/src.c.o.d -o CMakeFiles/cmTC_8589e.dir/src.c.o -c /Users/arcop/code/git/libmysofa-wasm/build-ninja/CMakeFiles/CMakeScratch/TryCompile-faoRwT/src.c
+        [2/2] : && /Users/arcop/code/git/emsdk/upstream/emscripten/emcc   CMakeFiles/cmTC_8589e.dir/src.c.o -o cmTC_8589e.js   && :
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/opt/homebrew/Cellar/cmake/3.26.3/share/cmake/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "/opt/homebrew/Cellar/cmake/3.26.3/share/cmake/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
+      - "/opt/homebrew/Cellar/cmake/3.26.3/share/cmake/Modules/CheckCXXCompilerFlag.cmake:40 (cmake_check_compiler_flag)"
+      - "/opt/homebrew/Cellar/cmake/3.26.3/share/cmake/Modules/GenerateExportHeader.cmake:238 (check_cxx_compiler_flag)"
+      - "/opt/homebrew/Cellar/cmake/3.26.3/share/cmake/Modules/GenerateExportHeader.cmake:419 (_test_compiler_hidden_visibility)"
+      - "src/CMakeLists.txt:122 (generate_export_header)"
+    checks:
+      - "Performing Test COMPILER_HAS_HIDDEN_VISIBILITY"
+    directories:
+      source: "/Users/arcop/code/git/libmysofa-wasm/build-ninja/CMakeFiles/CMakeScratch/TryCompile-W0qNWH"
+      binary: "/Users/arcop/code/git/libmysofa-wasm/build-ninja/CMakeFiles/CMakeScratch/TryCompile-W0qNWH"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: ""
+      CMAKE_MODULE_PATH: "/Users/arcop/code/git/emsdk/upstream/emscripten/cmake/Modules;/Users/arcop/code/git/emsdk/upstream/emscripten/cmake/Modules;/Users/arcop/code/git/emsdk/upstream/emscripten/cmake/Modules;/Users/arcop/code/git/emsdk/upstream/emscripten/cmake/Modules;/Users/arcop/code/git/emsdk/upstream/emscripten/cmake/Modules;/Users/arcop/code/git/libmysofa-wasm/cmake"
+    buildResult:
+      variable: "COMPILER_HAS_HIDDEN_VISIBILITY"
+      cached: true
+      stdout: |
+        Change Dir: /Users/arcop/code/git/libmysofa-wasm/build-ninja/CMakeFiles/CMakeScratch/TryCompile-W0qNWH
+        
+        Run Build Command(s):/opt/homebrew/bin/ninja -v cmTC_09647 && [1/2] /Users/arcop/code/git/emsdk/upstream/emscripten/em++ -DCOMPILER_HAS_HIDDEN_VISIBILITY  -fvisibility=hidden -MD -MT CMakeFiles/cmTC_09647.dir/src.cxx.o -MF CMakeFiles/cmTC_09647.dir/src.cxx.o.d -o CMakeFiles/cmTC_09647.dir/src.cxx.o -c /Users/arcop/code/git/libmysofa-wasm/build-ninja/CMakeFiles/CMakeScratch/TryCompile-W0qNWH/src.cxx
+        [2/2] : && /Users/arcop/code/git/emsdk/upstream/emscripten/em++   CMakeFiles/cmTC_09647.dir/src.cxx.o -o cmTC_09647.js   && :
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/opt/homebrew/Cellar/cmake/3.26.3/share/cmake/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "/opt/homebrew/Cellar/cmake/3.26.3/share/cmake/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
+      - "/opt/homebrew/Cellar/cmake/3.26.3/share/cmake/Modules/CheckCXXCompilerFlag.cmake:40 (cmake_check_compiler_flag)"
+      - "/opt/homebrew/Cellar/cmake/3.26.3/share/cmake/Modules/GenerateExportHeader.cmake:239 (check_cxx_compiler_flag)"
+      - "/opt/homebrew/Cellar/cmake/3.26.3/share/cmake/Modules/GenerateExportHeader.cmake:419 (_test_compiler_hidden_visibility)"
+      - "src/CMakeLists.txt:122 (generate_export_header)"
+    checks:
+      - "Performing Test COMPILER_HAS_HIDDEN_INLINE_VISIBILITY"
+    directories:
+      source: "/Users/arcop/code/git/libmysofa-wasm/build-ninja/CMakeFiles/CMakeScratch/TryCompile-Cjqk8n"
+      binary: "/Users/arcop/code/git/libmysofa-wasm/build-ninja/CMakeFiles/CMakeScratch/TryCompile-Cjqk8n"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: ""
+      CMAKE_MODULE_PATH: "/Users/arcop/code/git/emsdk/upstream/emscripten/cmake/Modules;/Users/arcop/code/git/emsdk/upstream/emscripten/cmake/Modules;/Users/arcop/code/git/emsdk/upstream/emscripten/cmake/Modules;/Users/arcop/code/git/emsdk/upstream/emscripten/cmake/Modules;/Users/arcop/code/git/emsdk/upstream/emscripten/cmake/Modules;/Users/arcop/code/git/libmysofa-wasm/cmake"
+    buildResult:
+      variable: "COMPILER_HAS_HIDDEN_INLINE_VISIBILITY"
+      cached: true
+      stdout: |
+        Change Dir: /Users/arcop/code/git/libmysofa-wasm/build-ninja/CMakeFiles/CMakeScratch/TryCompile-Cjqk8n
+        
+        Run Build Command(s):/opt/homebrew/bin/ninja -v cmTC_87eb9 && [1/2] /Users/arcop/code/git/emsdk/upstream/emscripten/em++ -DCOMPILER_HAS_HIDDEN_INLINE_VISIBILITY  -fvisibility-inlines-hidden -MD -MT CMakeFiles/cmTC_87eb9.dir/src.cxx.o -MF CMakeFiles/cmTC_87eb9.dir/src.cxx.o.d -o CMakeFiles/cmTC_87eb9.dir/src.cxx.o -c /Users/arcop/code/git/libmysofa-wasm/build-ninja/CMakeFiles/CMakeScratch/TryCompile-Cjqk8n/src.cxx
+        [2/2] : && /Users/arcop/code/git/emsdk/upstream/emscripten/em++   CMakeFiles/cmTC_87eb9.dir/src.cxx.o -o cmTC_87eb9.js   && :
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/opt/homebrew/Cellar/cmake/3.26.3/share/cmake/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "/opt/homebrew/Cellar/cmake/3.26.3/share/cmake/Modules/CheckCXXSourceCompiles.cmake:76 (cmake_check_source_compiles)"
+      - "/opt/homebrew/Cellar/cmake/3.26.3/share/cmake/Modules/GenerateExportHeader.cmake:206 (check_cxx_source_compiles)"
+      - "/opt/homebrew/Cellar/cmake/3.26.3/share/cmake/Modules/GenerateExportHeader.cmake:263 (_check_cxx_compiler_attribute)"
+      - "/opt/homebrew/Cellar/cmake/3.26.3/share/cmake/Modules/GenerateExportHeader.cmake:420 (_test_compiler_has_deprecated)"
+      - "src/CMakeLists.txt:122 (generate_export_header)"
+    checks:
+      - "Performing Test COMPILER_HAS_DEPRECATED_ATTR"
+    directories:
+      source: "/Users/arcop/code/git/libmysofa-wasm/build-ninja/CMakeFiles/CMakeScratch/TryCompile-rkcfk3"
+      binary: "/Users/arcop/code/git/libmysofa-wasm/build-ninja/CMakeFiles/CMakeScratch/TryCompile-rkcfk3"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: ""
+      CMAKE_MODULE_PATH: "/Users/arcop/code/git/emsdk/upstream/emscripten/cmake/Modules;/Users/arcop/code/git/emsdk/upstream/emscripten/cmake/Modules;/Users/arcop/code/git/emsdk/upstream/emscripten/cmake/Modules;/Users/arcop/code/git/emsdk/upstream/emscripten/cmake/Modules;/Users/arcop/code/git/emsdk/upstream/emscripten/cmake/Modules;/Users/arcop/code/git/libmysofa-wasm/cmake"
+    buildResult:
+      variable: "COMPILER_HAS_DEPRECATED_ATTR"
+      cached: true
+      stdout: |
+        Change Dir: /Users/arcop/code/git/libmysofa-wasm/build-ninja/CMakeFiles/CMakeScratch/TryCompile-rkcfk3
+        
+        Run Build Command(s):/opt/homebrew/bin/ninja -v cmTC_34463 && [1/2] /Users/arcop/code/git/emsdk/upstream/emscripten/em++ -DCOMPILER_HAS_DEPRECATED_ATTR   -MD -MT CMakeFiles/cmTC_34463.dir/src.cxx.o -MF CMakeFiles/cmTC_34463.dir/src.cxx.o.d -o CMakeFiles/cmTC_34463.dir/src.cxx.o -c /Users/arcop/code/git/libmysofa-wasm/build-ninja/CMakeFiles/CMakeScratch/TryCompile-rkcfk3/src.cxx
+        /Users/arcop/code/git/libmysofa-wasm/build-ninja/CMakeFiles/CMakeScratch/TryCompile-rkcfk3/src.cxx:2:25: warning: 'somefunc' is deprecated [-Wdeprecated-declarations]
+            int main() { return somefunc();}
+                                ^
+        /Users/arcop/code/git/libmysofa-wasm/build-ninja/CMakeFiles/CMakeScratch/TryCompile-rkcfk3/src.cxx:1:16: note: 'somefunc' has been explicitly marked deprecated here
+        __attribute__((__deprecated__)) int somefunc() { return 0; }
+                       ^
+        1 warning generated.
+        [2/2] : && /Users/arcop/code/git/emsdk/upstream/emscripten/em++   CMakeFiles/cmTC_34463.dir/src.cxx.o -o cmTC_34463.js   && :
+        
+      exitCode: 0
+...

@@ -6,6 +6,8 @@
 
 int main() {
 
+  puts("external is trying to run");
+
   int err;
 
   CU_pSuite pSuite = NULL;

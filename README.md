@@ -32,6 +32,63 @@ stored according to the AES69-2015 standard [http://www.aes.org/publications/sta
 </a>
 </div>
 
+## Compiling for wasm
+
+I've found `make` to be more finnicky / less stable than using `ninja` for the actual build step. 
+
+Getting a working wasm binary is a little bit complicated; as intermediate steps, you'll also need to download the source for and then compile to wasm `cunit` and `zlib`, and be able to point to the `math.h` header inside of `emsdk`. (You'll need `emscripten` locally on your system to do this.)
+
+I've hardcoded filepaths to these external dependencies as I configured them on my own machine; they won't work out of the box if you clone this repo, but you can use my edits as starting points for your own custom cmake configuration. 
+
+Once you finally have all the relevant external dependencies compiled and on hand, here's how you build mysofa to wasm using ninja: 
+
+1. Create a directory immediately within root named `build`, or something similar. 
+
+2. Within build, run some variation of `emcmake cmake .. -G Ninja`. For the purposes of debugging, lately I've been using: `emcmake cmake -DCMAKE_BUILD_TYPE=Debug -DVDEBUG=1 .. -G Ninja`
+
+3. To perform the actual build, run `ninja` in the same directory
+
+4. `cd` into the newly-created `src` directory. 
+
+5. Run some variation of: `emcc -O0 --profiling libmysofa.a /Users/arcop/Downloads/zlib-1.2.13/build/libz.a  -o mysofa.html -sEXPORTED_FUNCTIONS=_mysofa_open,_mysofa_open_data  -sEXPORTED_RUNTIME_METHODS=ccall,cwrap`
+
+Changing `-O0` to `-O2` will optimize the build, but in practice I've found it breaks things like being able to print error messages via `fprintf` from compiled C code to the browser console at runtime. `--profiling` is also optional; I think it has to do with debug symbols. For my own testing I've only exported the functions `mysofa_open` and `my_sofa_open_data`, but there are many more public-facing functions the `mysofa` API makes available; add them as you need them as command arguments. 
+
+Also notice that I've needed to explicitly include a path to my self-compiled wasm version of `zlib`; final compilation to wasm will fail otherwise. 
+
+6. To test the wasm binary locally in your browser, the easiest way is to run `python -m http.server` from the project root; navigate to `http://localhost:{port}/build/src/mysofa.html`.
+
+7. In the browser's debug console, here's the test program I've been running: 
+
+```
+const res = await fetch('/share/dtf_nh2.sofa');
+
+const dtfBuf = await res.arrayBuffer();
+const dtfData = new Uint8Array(dtfBuf);
+
+const filterLength = new Int32Array(Module.asm.memory.buffer, 0, 1);
+const error = new Int32Array(Module.asm.memory.buffer, 4, 1);
+
+const pDtfData = new Uint8Array(Module.asm.memory.buffer, 8, dtfData.byteLength); 
+pDtfData.set(dtfData);
+
+const pHrtf = _mysofa_open_data(pDtfData.byteOffset, pDtfData.byteLength, 48000, filterLength.byteOffset, error.byteOffset); 
+
+console.log(error[0]); 
+```
+
+You'll see that `mysofa` runs without crashing, but always outputs an error code of `10000`, which signals that the data it's attempting to read is in an invalid format. 
+
+This is my current blocker; the library seems to compile and run fine, but loading in data is broken. 
+
+Once data loads properly, the next step is in C++ to write a wrapper class around `mysofa`'s HRTF C struct, so that using `EMBIND` it will be possibly to query loaded HRTFs like regular JavaScript objects.  
+
+I've done all of this on an M1 Macbook, but theoretically it should be just as doable on Linux, and maybe in Windows. 
+
+Finally, I've uploaded the ninja-built wasm binaries as a release in this repo. 
+
+
+
 ## Compile
 
 On Ubuntu, to install the required components, enter

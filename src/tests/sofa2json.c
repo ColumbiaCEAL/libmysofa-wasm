@@ -7,6 +7,7 @@
 #include "../hrtf/mysofa.h"
 #include "../hrtf/tools.h"
 #include "json.h"
+#include "../hdf/reader.h"
 
 #include <stddef.h>
 #include <stdio.h>
